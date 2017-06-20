@@ -1,0 +1,288 @@
+\documentclass[a4paper]{article}
+\usepackage{vntex}
+\usepackage{a4wide,amssymb,epsfig,latexsym,multicol,array,hhline,fancyhdr}
+\usepackage{fancybox}
+\usepackage{amsmath}
+\usepackage{lastpage}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}							
+\usepackage{array}
+\usepackage{tabularx, caption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{arydshln}
+\usepackage{rotating}
+\usepackage{graphics}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{epsfig}
+\usepackage{tikz}
+\usetikzlibrary{arrows,snakes,backgrounds}
+\usepackage{hyperref}
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
+\setlength{\headheight}{40pt}
+\pagestyle{fancy}
+\fancyhead{} 
+\fancyhead[L]{
+ \begin{tabular}{rl}
+    \begin{picture}(25,15)(0,0)
+    \put(0,-8){\includegraphics[width=8mm, height=8mm]{hcmut.png}}
+   \end{picture}&
+	\begin{tabular}{l}
+		\textbf{\bf \ttfamily Trường Đại Học Bách Khoa Tp.Hồ Chí Minh}\\
+		\textbf{\bf \ttfamily Khoa Khoa Học và Kỹ Thuật Máy Tính}
+	\end{tabular} 	
+ \end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{l}
+		\tiny \bf \\
+		\tiny \bf 
+	\end{tabular}  }
+\fancyfoot{} 
+\fancyfoot[L]{\scriptsize \ttfamily Assignment 2 - Kĩ thuật lập trình}
+\fancyfoot[R]{\scriptsize \ttfamily Trang {\thepage}/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+
+
+%%%
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\makeatletter
+\newcounter {subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection .\@alph\c@subsubsubsection}
+\newcommand\subsubsubsection{\@startsection{subsubsubsection}{4}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\newcommand*\l@subsubsubsection{\@dottedtocline{3}{10.0em}{4.1em}}
+\newcommand*{\subsubsubsectionmark}[1]{}
+\makeatother
+
+
+\begin{document}
+\thispagestyle{empty}
+\thisfancypage{
+\setlength{\fboxsep}{10pt}
+\fbox}{} 
+\begin{titlepage}
+\begin{center}
+ĐẠI HỌC QUỐC GIA THÀNH PHỐ HỒ CHÍ MINH \\
+TRƯỜNG ĐẠI HỌC BÁCH KHOA \\
+KHOA KHOA HỌC - KỸ THUẬT MÁY TÍNH 
+\end{center}
+
+\vspace{1cm}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=3cm]{hcmut.png}
+\end{center}
+\end{figure}
+
+\vspace{1cm}
+
+
+\begin{center}
+\begin{tabular}{l}
+\multicolumn{1}{l}{\textbf{{\Large Kĩ thuật lập trình}}}\\
+~~\\
+\hline
+\\
+\multicolumn{1}{l}{\textbf{{\Large Assignment 2:  Thiết kế phần  mềm quản lý thư viện}}}\\
+\\
+\hline
+\end{tabular}
+\end{center}
+\vspace{1cm}
+\begin{center}
+\vspace{1cm}
+\end{center}
+\begin{center}
+\begin{tabular}{rlc}
+Sinh Viên: &Vũ Hoàng Văn  \hspace{1cm}     & 1614063 \\
+&Nguyễn Văn Tường	&1614028\\
+&Huỳnh Phúc Nghị	&1612233\\
+&Lương Tuấn Kiệt & 1611695\\
+
+\end{tabular}
+\end{center}
+\vspace{3.2cm}
+\begin{center}
+{\footnotesize TP. HỒ CHÍ MINH, THÁNG 6/2017}
+\end{center}
+\end{titlepage}
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+%Danh sách bảng
+\newpage
+\thispagestyle{empty}
+\listoftables
+
+%Danh sách hình
+\newpage
+\thispagestyle{empty}
+\listoffigures
+
+\newpage
+
+\section{Tổ chức nhóm}
+	
+	Thành lập bảng, nêu rõ:
+	\begin{itemize}
+		\item \% đóng góp của các thành viên vào dự án này. Tổng \% của tất cả phải là 100\%.
+		\item Tự cho điểm cho mỗi thành viên.
+		\item Bảng chia công việc cho các thành viên đã làm.
+	\end{itemize}
+	
+	Bên cạnh đó, nêu rõ tổ chức nhóm như nhóm trưởng và thư ký. Cũng có thể minh chứng các lịch họp và nội dung thảo luận.
+
+	\begin{table}[!h]
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline 
+				Sinh viên & MSSV & Thành phần & Tỉ lệ điểm & Ghi chú \\ 
+				\hline 
+		   	 	Huỳnh Phúc Nghị & 1612233 & Sơ đồ, giải thuật, tester & 25\%&   \\ 
+			    \hline 
+			    Lương Tuấn Kiệt & 1611695 & Thiết kế mã nguồn, cơ sở dữ liệu & 25\%&  \\ 
+				\hline 
+				Nguyễn Văn Tường & 1614028 & Thiết kế giao diện & 25\% &\\ 
+				\hline 
+				Vũ Hoàng Văn & 1614063 & Thiết kế tính năng & 25\% &\\ 
+				\hline 
+			\end{tabular} 
+			\caption{Bảng tổ chức nhóm}
+		\end{center}
+	\end{table}
+	Trao đổi giữa các thành viên trong nhóm:	
+	\begin{itemize}
+	\item Trao đổi ý tưởng: Facebook
+	\item Trao đổi mã nguồn: Git + Github
+	\item 
+	\end{itemize}
+\newpage
+\section{Khảo sát và Phân tích yêu cầu của phần mềm}
+Nêu bản khảo sát và phân tích.
+Đúc kết các tính năng của phần mềm.
+Yêu cầu đề bài: Thiết kế một phần mềm hỗ trợ các hoạt động diễn ra hằng ngày ở một thư viện.
+\subsection{Khảo sát, tìm hiểu yêu cầu}
+\subsection{Phần tích yêu cầu}
+
+
+\section{Thiết kế phần mềm}
+\subsection{Thiết kế các cấu trúc dữ liệu dùng để phát triển phần mềm thư viện}
+Nêu sơ đồ thiết kế bằng hình ảnh và diễn giải. Đối với các lớp hay cấu trúc, có thể trịch code đặt tại đây, nhưng cần ngắn gọn.
+\begin{itemize}
+	\item Cấu trúc dữ liệu chính: lớp Người dùng.\\
+	\item Phương thức lưu trữ / truy xuất dữ liệu: ngôn ngữ cơ sở dữ liệu SQLITE tích hợp trong Qt
+	\item 
+\end{itemize}
+
+\subsection{Thiết kế các khối chức năng và hệ thống con}
+Nêu sơ đồ và diễn giải.
+
+\subsection{Thiết kế giao diện}
+Giao diện của phần mềm được thiết kế dưới sự hỗ trợ của IDE Qt
+
+\section{Tổ chức và quản lý mã nguồn trong quá trình quá triển}
+Nêu sơ đồ tổ chức code (thường là cây các thư mục chứa mã nguồn, tài nguyên, tài liệu, v.v.)
+
+Trích dẫn link đến Git nếu có dùng.
+
+Đường dẫn vào kho Github: \url{https://github.com/blackslender/LIBPRO.git}
+\section{Thu thập số liệu}
+Nêu phương pháp thu thập, kết quả thu thập.
+
+\section{Kiểm tra phần mềm}
+Nêu các testcases được thiết kế ra và kết quả kiểm tra. Lập bảng "checklist".
+
+\section{Các tài liệu}
+\subsection{Chú thích mã nguồn và định dạng}
+Phần này cần tự đánh giá là có làm hay không và làm như thế nào thì có thể trích dẫn một hàm nào đó có đi kèm chú thích và được định dạng.
+\subsection{Tài liệu hổ trợ phát triển và nâng cấp}
+Các nội dung liên quan để giúp người khác (không phải các thàn viên) theo tài liệu này thì có thể biên dịch dự án thành công và phát triển tiếp được.
+
+
+kèm theo là các sơ đồ flowchart và mã giả cho các hàm quan trọng.
+
+\subsection{Tài liệu hướng dẫn triển khai}
+\subsection{Tài liệu hướng dẫn sử dụng phần mềm}
+
+
+\section{Bảng tự đánh giá}
+\subsection{Theo tiêu chí của giảng viên}
+Viết một hoặc vài đoạn bàn về các kết quả đạt được với Bài tập lớn số 2 và những điểm chưa làm tốt (nếu có).
+
+Phía cuối cùng của đoạn này, các thành viên cần tự đánh giá và cho điểm theo Bảng \ref{tb:rubrics}.
+
+\begin{table}[h!]
+	\centering
+	\caption{Các tiêu chí chấm bài}
+	\label{tb:rubrics}
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline\hline
+		\multicolumn{5}{|l|}{\textbf{Phần Bắt buộc}} \\
+		\hline
+		\textbf{STT} & \textbf{Tiêu chí} & \textbf{Báo cáo} & \textbf{Mã nguồn} & \textbf{C.Trình}\\
+		\hline
+		1. & Phân tích & 0.1 & &  \\ \hdashline
+		2. & Thiết kế & 0.1 &&\\ \hdashline
+		3. & Tổ chức mã nguồn & & 0.05 & \\ \hdashline
+		4. & Thu thập số liệu & && \\\hdashline
+		5. & Kiểm tra phần mềm & 0.025&& \\\hdashline
+		6. & Lập tài liệu & 0.025& 0.05& \\\hdashline
+		7. & Phân chia công việc và phối hợp & 0.025&& \\\hdashline
+		8. & Báo cáo hoàn chỉnh và chuyên nghiệp &&& \\\hdashline
+		9. & Sử dụng thành thạo nhập xuất màn hình & & & 0.1\\\hdashline
+		10. & Sử dụng thành thạo nhập xuất tập tin &  & &  0.1\\\hdashline
+		11. & Phát triển giải thuật phù hợp ($\in$ Báo cáo \& chương trình) & 0.025& & 0.4\\ \hdashline
+		\multicolumn{2}{|r|}{\textbf{Tổng phần bắt buộc:}} &\textbf{0.3}& \textbf{0.1}& \textbf{0.6}\\
+		
+		\hline
+		\multicolumn{5}{|l|}{\textbf{Phần cộng thêm}} \\
+		\hline
+		1. & Có sử dụng GUI &  && 0.1\\ \hdashline
+		2. & Có sử dụng Git hay phần mềm tương đương & & 0.05& \\ \hdashline
+		3. & Có sử dụng công cụ để thiết kế & 0.1 &&\\ \hdashline
+		4. & Viết được Makefile &  & 0.05&\\ \hdashline
+		5. & Có nhiều tính năng hay bổ sung & && 0.0 $\rightarrow$ 0.15 \\
+		\hdashline
+		\multicolumn{2}{|r|}{\textbf{Tổng phần cộng thêm:}} &\textbf{0.1}& \textbf{0.1}& \textbf{0.1 $\rightarrow$ 0.25}\\
+		\hline
+		\multicolumn{4}{|r|}{\textbf{Tổng toàn bộ}} & \textbf{1.3 $\rightarrow$ 1.45}\\
+		
+		
+		
+		
+		
+		\hline\hline
+		
+	\end{tabular}
+	
+\end{table}
+
+\subsection{Những điểm khác}
+Ngoài các tiêu chí cứng như trong Bảng \ref{tb:rubrics}, nếu nhóm thực hiện thấy những điểm mà nhóm đã nổ lực nhưng chưa được đánh giá trong các tiêu chí của giảng viên thì cũng có thể viết ra ở đây. Các thành viên có thể sẽ được cộng thêm điểm cho những cố gắng này.
+
+Nếu không có thì nhóm nên xoá phần này khỏi báo cáo.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Tài liệu tham khảo}
+\begin{thebibliography}{99999}
+\bibitem[tvtt]{tvtt} {Thư viện trung tâm, Đại học Quốc gia Tp.HCM: \url{http://www.vnulib.edu.vn/#1}}. Truy cập nhật dd/mm/yyyy.
+
+
+\end{thebibliography} 
+\end{document}
+
+
