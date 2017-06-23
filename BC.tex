@@ -1368,7 +1368,8 @@ void MainWindow::on_actionChangeRole()
     foreach(QMdiSubWindow *child,mdi->subWindowList()) child->close();
     ChangeRole *role=new ChangeRole(user);
     QMdiSubWindow *wrole=mdi->addSubWindow(role);
-    wrole->setWindowFlags((wrole->windowFlags()^Qt::WindowMaximizeButtonHint)^Qt::WindowMinimizeButtonHint);
+    wrole->setWindowFlags((wrole->windowFlags()^Qt::WindowMaximizeButtonHint)
+    ^Qt::WindowMinimizeButtonHint);
     wrole->layout()->setSizeConstraint(QLayout::SetFixedSize);
     wrole->setWindowTitle("Doi vai tro");
     wrole->show();
@@ -1478,7 +1479,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionVersion_triggered()
 {
-    QMessageBox::information(this,"Thong tin phien ban","LIBPRO "+VERSION+" \n Nhom tac gia: \n Luong Tuan Kiet - 1611695 \n Nguyen Van Tuong - 1614028 \n Huynh Phuc Nghi - 1612233 \n Vu Hoang Van 1614063");
+    QMessageBox::information(this,"Thong tin phien ban","LIBPRO "+VERSION+" 
+    \n Nhom tac gia: \n Luong Tuan Kiet - 1611695 \n Nguyen Van Tuong - 1614028 
+    \n Huynh Phuc Nghi - 1612233 \n Vu Hoang Van 1614063");
 }
 
 void MainWindow::showToolbar() {
@@ -1488,7 +1491,8 @@ void MainWindow::showToolbar() {
    // toolbar->addSeparator();
     toolbar->setIconSize(QSize(18,18));
     QAction *btnNewWindow = toolbar->addAction(QIcon(newpix), "Cua so LIBPRO moi");
-    QAction *btnChangeRole = toolbar->addAction(QIcon(changerole),"Thay doi tu cach dang nhap");
+    QAction *btnChangeRole = toolbar->addAction(QIcon(changerole),
+    "Thay doi tu cach dang nhap");
     QAction *btnLogOut = toolbar -> addAction(QIcon(logoutpix),"Dang xuat");
     connect(btnNewWindow, &QAction::triggered, this,&MainWindow::createWindow);
     connect(btnChangeRole,&QAction::triggered,this,&MainWindow::on_actionChangeRole);
